@@ -1,0 +1,15 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="App.main.ui.input_txt_area" />
+          <option value="App.main.ui.sub_text_area" />
+          <option value="App.main.ui.temp_val" />
+          <option value="website_project.website.urls.website" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
