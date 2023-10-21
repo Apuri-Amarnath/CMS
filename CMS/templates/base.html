@@ -11,9 +11,9 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg bg-dark bg-body-tertiary text-white">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary text-white" style="background-color:#6f42c1">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">CMS</a>
+            <a class="navbar-brand text-white" href="#">CMS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -24,17 +24,22 @@
                     <li class="nav-item">
                         <a class="nav-link text-white active" aria-current="page" href="">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="">Blog</a>
-
+                    {% if request.user.is_authenticated %}
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            Blog posts
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'mypostspage' %}">My Posts</a></li>
+                            <li><a class="dropdown-item" href="">All posts</a></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Sign Out</a></li>
+                        </ul>
+                    </div>
+                    {% else %}
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{% url 'login' %}">Sign In</a>
                     </li>
-                    {% if request.user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{% url 'logout' %}">Sign Out</a>
-                    </li>
-                    {% else %}
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{% url 'register' %}">Sign Up</a>
                     </li>
