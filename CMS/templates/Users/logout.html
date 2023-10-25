@@ -1,17 +1,47 @@
 {% extends 'base.html'%}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="row">
-    <div class="col-11 col-md-4 justify-content-center align-items-center container mx-auto mt-5">
+<div class="row text-center">
+    <div class="col-11 col-md-4 container mx-auto mt-5">
         <div class="card">
             <div class="card-body">
                 <h2 class="card-title">You have been logged out</h2>
                 <div class="border-top pt-3">
                     <small><a href="{%url 'login'%}">log in again</a></small>
                 </div>
+                <div id="countdown-placeholder" class="text-center mt-4"> In <b><span id="countdown-timer"></span></b> you will be Redrected to the HomePage</div>
             </div>
         </div>
     </div>
 </div>
-</div>
+<script>
+// Countdown function
+function startCountdown(duration, display) {
+    let timer = duration, minutes, seconds;
+    const countdownInterval = setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            clearInterval(countdownInterval);
+            window.location.href = "{% url 'index' %}"; // Redirect to 'index' URL
+        }
+    }, 1000);
+}
+
+// Set the countdown timer duration in seconds
+const countdownDuration = 3; // Adjust as needed
+
+// Initialize the countdown timer
+window.onload = function () {
+    const display = document.querySelector("#countdown-timer");
+    startCountdown(countdownDuration, display);
+};
+</script>
+
 {% endblock content %}

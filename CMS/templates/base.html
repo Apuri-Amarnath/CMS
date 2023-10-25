@@ -13,7 +13,7 @@
 <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary text-white" style="background-color:#6f42c1">
         <div class="container-fluid">
-            <a class="navbar-brand text-white" href="#">CMS</a>
+            <a class="navbar-brand text-white" href="{% url 'index' %}">CMS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav space-between" style="margin-left: auto;margin-right:20px">
                     <li class="nav-item">
-                        <a class="nav-link text-white active" aria-current="page" href="">Home</a>
+                        <a class="nav-link text-white active" aria-current="page" href="{% url 'index' %}">Home</a>
                     </li>
                     {% if request.user.is_authenticated %}
                     <div class="dropdown">
@@ -32,7 +32,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{% url 'mypostspage' %}">My Posts</a></li>
-                            <li><a class="dropdown-item" href="">All posts</a></li>
+                            <li><a class="dropdown-item" href="{% url 'index' %}">All posts</a></li>
                             <li><a class="dropdown-item" href="{% url 'logout' %}">Sign Out</a></li>
                         </ul>
                     </div>

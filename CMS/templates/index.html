@@ -1,29 +1,37 @@
 {% extends 'base.html'%}
 {% block content%}
-
+{% load static %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6 col-12 mx-md-auto mx-4 mt-5 mb-5"></div>
-        <h1 class="fw-bolder">Django Blog</h1>
-        <h5 class="text-muted">Django blog</h5>
+        <div class="col-md-6 col-12 mx-md-auto mx-4 mt-5 text-center">
+            <h5 class="text-muted">Django blog</h5></div>
     </div>
 </div>
-{% for object in object_list %}
-<div class="container-fluid mx-md-auto">
-    <div class="row" >
-        <div class="col-md-6 col-12 mx-md-auto mx-4 mt-1 mb-1"></div>
-        <h1 class="fw-bolder">{{ object.title }}</h1>
-        <p class="text-muted">{{ object.modified }}</p>
-        <p class="text-muted"> Posted by {{ object.author.username }}</p>
-        {% if object.likes.count == 1 %}
-        <p class="text-muted">{{ object.likes.count }} person likes this post</p>
-        {% else %}
-        <p class="text-muted">{{ object.likes.count }} people like this post</p>
-        {% endif %}
-        <div class="my-3">
-            {{ object.content|truncatewords_html:50|safe }}
+
+<div class="container custom-container" style="max-width: 1350px; ">
+    {% for object in object_list %}
+    <article class="media content-section">
+        <div class="media-body" style="border: 1px solid black; padding: 23px; margin-bottom: 10px;">
+            <div class="article-metadata">
+                <h3>{{ object.title }}</h3>
+                <hr style="clear:both;"/>
+                {% if object.likes.count == 1 %}
+                <p class="text-muted">{{ object.likes.count }} person likes this post</p>
+                {% else %}
+                <p class="text-muted">{{ object.likes.count }} people like this post</p>
+                {% endif %}
+            </div>
+            <p class="article-content">{{ object.body|truncatewords_html:50|safe }}</p>
+            <br><br>
+            <div class="container d-flex text-center p-1 ">
+                <div class="text-left p-1"> created by <b>{{ object.author }} </b></div>
+                <div class="text-right p-1">{{ object.created|date:"F d, Y" }}</div>
+            </div>
+            <div class="container d-flex text-center p-1 ">
+                <a href="{% url 'post_detail' object.slug %}">Read More</a>
+            </div>
         </div>
-        <a href="#">Read More</a>
-    </div>
-</div>{% endfor%}
+    </article>
+    {% endfor %}
+</div>
 {% endblock content%}

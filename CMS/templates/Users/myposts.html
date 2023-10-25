@@ -1,4 +1,43 @@
 {% extends 'base.html'%}
-{% block content%}
-<h1>myposts</h1>
-{% endblock content%}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-12 mx-md-auto mx-4 mt-5 text-center">
+            {% if object_list.count == 0 %}
+            <h5 class="text-muted">You have no posts, please add a Post to View</h5>
+            {% else %}
+            <h5 class="text-muted">Your Posts</h5>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+<div class="container custom-container" style="max-width: 1350px; ">
+    {% for object in object_list %}
+    <article class="media content-section">
+        <div class="media-body" style="border: 1px solid black; padding: 23px; margin-bottom: 10px;">
+            <div class="article-metadata">
+                <h3>{{ object.title }}</h3>
+                <hr style="clear:both;"/>
+                {% if object.likes.count == 1 %}
+                <p class="text-muted">{{ object.likes.count }} person likes this post</p>
+                {% else %}
+                <p class="text-muted">{{ object.likes.count }} people like this post</p>
+                {% endif %}
+            </div>
+
+            <p class="article-content">{{ object.body|truncatewords_html:50|safe }}</p>
+            <br><br>
+            <div class="container d-flex text-center ">
+                <div class="text-left p-1"> created by <b> you </b></div>
+                <div class="text-right p-1">{{ object.created|date:"F d, Y" }}</div>
+            </div>
+            <div class="container d-flex text-center ">
+                <a href="{% url 'post_detail' object.slug %}">Read More</a>
+            </div>
+        </div>
+    </article>
+    {% endfor %}
+</div>
+{% endblock content %}
