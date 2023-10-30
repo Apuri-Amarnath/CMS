@@ -16,7 +16,6 @@ class Blog_post(models.Model):
     slug = models.SlugField()
     author = models.ForeignKey(User,default=None, on_delete=models.CASCADE)
     featured = models.BooleanField(default=False)
-    likes = models.ManyToManyField(User,related_name='Likes')
 
     def get_absolute_url(self):
         return reverse('post_detail', args=[str(self.post_id)])

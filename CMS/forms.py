@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
-
+from .models import Blog_post
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
     def __init__(self, *args, **kwargs):
@@ -52,3 +52,8 @@ class UserLoginForm(AuthenticationForm):
 
     class Meta:
         fields = ['username', 'password']
+
+class add_PostForm(forms.ModelForm):
+    class Meta:
+        model = Blog_post
+        fields = ['title', 'image', 'body', 'featured']

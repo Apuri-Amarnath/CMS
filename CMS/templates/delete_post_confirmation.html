@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container custom-container mt-5" style="max-width: 1350px; ">
+<div class="container text-center" style="border: 1px solid black; padding: 23px; margin-bottom: 10px;">
+    <h1>Delete Post Confirmation</h1>
+    <p>Are you sure you want to delete the post "{{ post.title }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Confirm Delete</button>
+        <a href="{% url 'index' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+</div>
+{% endblock content %}

@@ -10,16 +10,17 @@
 
 <div class="container custom-container" style="max-width: 1350px; ">
     {% for object in object_list %}
-    <article class="media content-section">
+    <article class="media content-section position-relative">
         <div class="media-body" style="border: 1px solid black; padding: 23px; margin-bottom: 10px;">
             <div class="article-metadata">
                 <h3>{{ object.title }}</h3>
                 <hr style="clear:both;"/>
+                <!-- This is a visible HTML comment
                 {% if object.likes.count == 1 %}
                 <p class="text-muted">{{ object.likes.count }} person likes this post</p>
                 {% else %}
                 <p class="text-muted">{{ object.likes.count }} people like this post</p>
-                {% endif %}
+                {% endif %}-->
             </div>
             <p class="article-content">{{ object.body|truncatewords_html:50|safe }}</p>
             <br><br>
@@ -30,6 +31,7 @@
             <div class="container d-flex text-center p-1 ">
                 <a href="{% url 'post_detail' object.slug %}">Read More</a>
             </div>
+
         </div>
     </article>
     {% endfor %}

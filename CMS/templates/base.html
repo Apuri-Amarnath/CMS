@@ -32,6 +32,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{% url 'mypostspage' %}">My Posts</a></li>
+                            <li><a class="dropdown-item" href="{% url 'add_post' %}">Add Post</a></li>
                             <li><a class="dropdown-item" href="{% url 'index' %}">All posts</a></li>
                             <li><a class="dropdown-item" href="{% url 'logout' %}">Sign Out</a></li>
                         </ul>
@@ -60,7 +61,7 @@
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <footer class="footer text-center">
     <div class="container">
-        <span class="text-muted">© 2023 Your Website Name</span>
+        <span class="text-muted">© 2023 Django - Blog</span>
     </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

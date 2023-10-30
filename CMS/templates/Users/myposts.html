@@ -15,7 +15,7 @@
 </div>
 <div class="container custom-container" style="max-width: 1350px; ">
     {% for object in object_list %}
-    <article class="media content-section">
+    <article class="media content-section position-relative">
         <div class="media-body" style="border: 1px solid black; padding: 23px; margin-bottom: 10px;">
             <div class="article-metadata">
                 <h3>{{ object.title }}</h3>
@@ -35,6 +35,9 @@
             </div>
             <div class="container d-flex text-center ">
                 <a href="{% url 'post_detail' object.slug %}">Read More</a>
+            </div>
+            <div class="position-absolute " style="top: 20px; right: 20px;" >
+                <a href="{% url 'delete_post' object.post_id %}" class="btn btn-danger">Delete Post</a>
             </div>
         </div>
     </article>
