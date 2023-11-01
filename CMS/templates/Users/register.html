@@ -1,5 +1,6 @@
 {% extends 'base.html'%}
 {% load crispy_forms_tags static %}
+{% load static %}
 {% block content %}
 <style>
     #hint_id_password1{display:none}
@@ -10,12 +11,11 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-title"><h2> Create an account</h2>
-                    <div class="card-body text-center cardbody-color p-lg-5">
-                        <img src="{% static 'img/logo.png' %}"
-                             class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3" width="200px"
-                             alt="profile">
+                    <div class="card-body cardbody-color p-lg-5">
+                        <img src="{% static 'static_images/logo.png' %}" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3" width="200px"
+                            alt="profile">
                     </div>
-                    <form action="" method="post">{% csrf_token %} {{ form|crispy }}
+                    <form action= "" method="post">{% csrf_token %} {{ form|crispy }}
                         <button class="btn btn-secondary px-4 py-2" style="background-color: #FFA500; border:none;" type="submit">Sign
                             Up
                         </button>

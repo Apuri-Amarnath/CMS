@@ -12,12 +12,14 @@ class RegisterView(View):
         return render(request, 'Users/register.html', {'form': form})
 
     def post(self, request):
-        form = UserLoginForm(request.POST)
+        form = UserRegisterForm(request.POST)
 
         if form.is_valid():
             form.save()
-        return redirect('index')
-
+            return redirect('index')  # Redirect to a success page, change to the appropriate URL
+        else:
+            # Handle the case where the form is not valid
+            return render(request, 'Users/register.html', {'form': form})
 
 class CustomLoginView(LoginView):
     form_class = UserLoginForm
